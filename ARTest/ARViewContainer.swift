@@ -8,6 +8,7 @@
 import RealityKit
 import SwiftUI
 import ARKit
+import Combine
 
 struct ARViewContainer: UIViewRepresentable{
     @EnvironmentObject var arViewModel : ARViewModel
@@ -19,13 +20,14 @@ struct ARViewContainer: UIViewRepresentable{
     func updateUIView(_ uiView: ARView, context: Context) {
         if(addCube){
             let boxMesh = MeshResource.generateBox(size: 0.1)
+            let model = try! ModelEntity.loadModel(named: "ball")
             let material = SimpleMaterial(color: .orange, isMetallic: false)
-            let modelEntity = ModelEntity(mesh: boxMesh, materials: [material])
-            let anchorEntity = AnchorEntity()
+            _ = ModelEntity(mesh: boxMesh, materials: [material])
+            let anchorEntity = AnchorEntity(plane: .any)
             
-            anchorEntity.addChild(modelEntity)
+            anchorEntity.addChild(model)
             arViewModel.arView.scene.addAnchor(anchorEntity)
-            DispatchQueue.main.sync {
+            DispatchQueue.main.async {
                 addCube = false
             }
         }
