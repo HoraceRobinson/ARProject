@@ -13,12 +13,18 @@ struct ContentView : View {
     var body: some View{
         ZStack(alignment: .bottom){
             ARViewContainer(addCube: $addCube)
-            Button(action: {
-                addCube = true
-            }, label: {
-                Text("Put a Cube")
-            }).buttonStyle(.bordered)
-                .padding()
+            VStack{
+                Text("Welcome to the AR world!")
+                    .foregroundColor(.blue)
+                    .font(.title)
+                Button(action: {
+                    addCube = true
+                }, label: {
+                    Text("Put a Cube")
+                }).buttonStyle(.bordered)
+                    .padding()
+            }
+            
         }
         .environmentObject(arViewModel)
     }

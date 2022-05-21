@@ -15,3 +15,15 @@ class ARViewModel : ObservableObject{
         arView = ARView()
     }
 }
+
+extension ARView: ARCoachingOverlayViewDelegate{
+    func addcoaching(){
+        let coach = ARCoachingOverlayView()
+        coach.delegate = self
+        coach.session = self.session
+        coach.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        coach.translatesAutoresizingMaskIntoConstraints = true
+        coach.goal = .anyPlane
+        self.addSubview(coach)
+    }
+}
