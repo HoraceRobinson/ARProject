@@ -28,15 +28,6 @@ struct ARViewContainer: UIViewRepresentable{
     }
     func updateUIView(_ uiView: ARView, context: Context) {
         if(addFruit){
-//            let model = try! ModelEntity.loadModel(named: modelName)
-//            model.scale = [0.5, 0.5, 0.5]
-//
-//            model.generateCollisionShapes(recursive: true)
-//            arViewModel.arView.installGestures([.all], for: model)
-//            let anchorEntity = AnchorEntity(plane: .any)
-//            anchorEntity.addChild(model)
-////            ball.move(to: transform, relativeTo: ball.parent, duration: 1, timingFunction: .easeOut)
-//            arViewModel.arView.scene.addAnchor(anchorEntity)
             fruitModel = modelName
             arViewModel.putFruit()
             DispatchQueue.main.async {

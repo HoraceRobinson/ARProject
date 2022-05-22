@@ -18,6 +18,7 @@ class ARViewModel : ObservableObject{
         arView = ARView()
         rec = arView.enableTapGesture()
         arView.addCoaching()
+        arView.setupWorldConfig()
     }
     
     func putFruit(){
@@ -29,8 +30,14 @@ class ARViewModel : ObservableObject{
     }
 }
 
-
 extension ARView{
+    func setupWorldConfig(){
+        let config = ARWorldTrackingConfiguration()
+        config.isAutoFocusEnabled = false
+        config.environmentTexturing = .automatic
+        config.isLightEstimationEnabled = true
+        self.session.run(config)
+    }
     func enableTapGesture() -> UITapGestureRecognizer{
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recongnizer: )))
         self.addGestureRecognizer(tap)
@@ -54,7 +61,12 @@ extension ARView{
     func placeObj(at position: SIMD3<Float>, model : ModelEntity){
         model.generateCollisionShapes(recursive: true)
         self.installGestures([.all], for: model)
+        let text = MeshResource.generateText(fruitModel)
+        let material = SimpleMaterial(color: .white, isMetallic: false)
+        let textModel = ModelEntity(mesh: text, materials: [material])
         let anchor = AnchorEntity(world: position)
+        
+        anchor.addChild(textModel)
         anchor.addChild(model)
         self.scene.addAnchor(anchor)
     }
