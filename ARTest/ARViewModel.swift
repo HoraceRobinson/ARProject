@@ -43,7 +43,7 @@ extension ARView{
     }
     
     func placeObj(at position: SIMD3<Float>){
-        let model = try! ModelEntity.loadModel(named: "ball")
+        let model = try! ModelEntity.loadModel(named: "lychee")
         model.generateCollisionShapes(recursive: true)
         self.installGestures([.all], for: model)
         let anchor = AnchorEntity(world: position)

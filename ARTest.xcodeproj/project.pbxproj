@@ -10,6 +10,9 @@
 		832FF8792838A0430027F1AB /* ARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832FF8782838A0430027F1AB /* ARViewModel.swift */; };
 		83385E5F283918B3000822FB /* ball.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83385E5E283918B3000822FB /* ball.usdz */; };
 		83385E612839390B000822FB /* container.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83385E602839390B000822FB /* container.usdz */; };
+		83385E63283A09AF000822FB /* lychee.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83385E62283A09AF000822FB /* lychee.usdz */; };
+		83385E65283A0B55000822FB /* blueberry.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83385E64283A0B55000822FB /* blueberry.usdz */; };
+		83385E67283A0E24000822FB /* apple.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 83385E66283A0E24000822FB /* apple.usdz */; };
 		839F707D280817FD0092DFC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839F707C280817FD0092DFC3 /* AppDelegate.swift */; };
 		839F707F280817FD0092DFC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 839F707E280817FD0092DFC3 /* ContentView.swift */; };
 		839F7081280817FD0092DFC3 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 839F7080280817FD0092DFC3 /* Experience.rcproject */; };
@@ -42,6 +45,9 @@
 		832FF8782838A0430027F1AB /* ARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewModel.swift; sourceTree = "<group>"; };
 		83385E5E283918B3000822FB /* ball.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = ball.usdz; path = ../../../../../Downloads/ball.usdz; sourceTree = "<group>"; };
 		83385E602839390B000822FB /* container.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = container.usdz; path = ../../../../../Downloads/container.usdz; sourceTree = "<group>"; };
+		83385E62283A09AF000822FB /* lychee.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = lychee.usdz; sourceTree = "<group>"; };
+		83385E64283A0B55000822FB /* blueberry.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = blueberry.usdz; sourceTree = "<group>"; };
+		83385E66283A0E24000822FB /* apple.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = apple.usdz; sourceTree = "<group>"; };
 		839F7079280817FD0092DFC3 /* ARTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		839F707C280817FD0092DFC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		839F707E280817FD0092DFC3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,6 +111,9 @@
 			isa = PBXGroup;
 			children = (
 				83385E602839390B000822FB /* container.usdz */,
+				83385E62283A09AF000822FB /* lychee.usdz */,
+				83385E66283A0E24000822FB /* apple.usdz */,
+				83385E64283A0B55000822FB /* blueberry.usdz */,
 				83385E5E283918B3000822FB /* ball.usdz */,
 				839F707C280817FD0092DFC3 /* AppDelegate.swift */,
 				839F707E280817FD0092DFC3 /* ContentView.swift */,
@@ -246,9 +255,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83385E65283A0B55000822FB /* blueberry.usdz in Resources */,
 				83385E5F283918B3000822FB /* ball.usdz in Resources */,
 				83385E612839390B000822FB /* container.usdz in Resources */,
+				83385E63283A09AF000822FB /* lychee.usdz in Resources */,
 				839F7086280818080092DFC3 /* Preview Assets.xcassets in Resources */,
+				83385E67283A0E24000822FB /* apple.usdz in Resources */,
 				839F7083280818080092DFC3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
