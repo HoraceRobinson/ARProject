@@ -11,7 +11,7 @@ struct ContentView : View {
     @StateObject var arViewModel = ARViewModel()
     @State var addFruit = false
     @State var modelName = "apple"
-    var nameList = ["apple", "blueberry", "lychee", "bowl"]
+    var nameList = ["apple", "blueberry", "lychee", "peach", "banana", "coconut", "grape", "bowl"]
     var body: some View{
         ZStack(alignment: .bottom){
             ARViewContainer(addFruit: $addFruit, modelName: $modelName)
