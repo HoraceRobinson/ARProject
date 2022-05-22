@@ -9,41 +9,49 @@ import SwiftUI
 import RealityKit
 import ARKit
 
+var fruitModel = "apple"
+
 class ARViewModel : ObservableObject{
     var arView : ARView
+    var rec : UITapGestureRecognizer
     init(){
         arView = ARView()
-//        arView.initARWorldConfig()
-        arView.enableTapGesture()
+        rec = arView.enableTapGesture()
         arView.addCoaching()
+    }
+    
+    func putFruit(){
+        rec = arView.enableTapGesture()
+    }
+    
+    func remove(){
+        arView.disableTapGesture(tap: rec)
     }
 }
 
-//extension ARView{
-//    func initARWorldConfig(){
-//        let config = ARWorldTrackingConfiguration()
-//        config.isAutoFocusEnabled = true
-//        self.session.run(config)
-//
-//    }
-//}
+
 extension ARView{
-    func enableTapGesture(){
+    func enableTapGesture() -> UITapGestureRecognizer{
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap(recongnizer: )))
         self.addGestureRecognizer(tap)
+        return tap
+    }
+    
+    func disableTapGesture(tap: UITapGestureRecognizer){
+        self.removeGestureRecognizer(tap)
     }
     
     @objc func handleTap(recongnizer: UITapGestureRecognizer){
         let loc = recongnizer.location(in: self)
         let result = self.raycast(from: loc, allowing: .estimatedPlane, alignment: .any)
+        let model = try! ModelEntity.loadModel(named: fruitModel)
         if let first = result.first{
             let pos = simd_make_float3(first.worldTransform.columns.3)
-            placeObj(at: pos)
+            placeObj(at: pos, model: model)
         }
     }
     
-    func placeObj(at position: SIMD3<Float>){
-        let model = try! ModelEntity.loadModel(named: "lychee")
+    func placeObj(at position: SIMD3<Float>, model : ModelEntity){
         model.generateCollisionShapes(recursive: true)
         self.installGestures([.all], for: model)
         let anchor = AnchorEntity(world: position)

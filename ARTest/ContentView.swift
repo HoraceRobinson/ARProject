@@ -9,20 +9,21 @@ import SwiftUI
 
 struct ContentView : View {
     @StateObject var arViewModel = ARViewModel()
-    @State var addCube = false
+    @State var addFruit = false
     @State var modelName = "apple"
-    var nameList = ["apple", "blueberry", "lychee"]
+    var nameList = ["apple", "blueberry", "lychee", "bowl"]
     var body: some View{
         ZStack(alignment: .bottom){
-            ARViewContainer(addCube: $addCube, modelName: $modelName)
+            ARViewContainer(addFruit: $addFruit, modelName: $modelName)
             VStack{
-                Text("Welcome to the AR world!")
-                    .foregroundColor(.blue)
+                Text("Choose a fruit to put!")
+                    .fontWeight(.heavy)
                     .font(.title)
+                    .foregroundColor(.white.opacity(0.8))
                 HStack{
                     ForEach(nameList, id: \.self){name in
                         Button(action: {
-                            addCube = true
+                            addFruit = true
                             modelName = name
                         }, label: {
                             Text("\(name)")
@@ -31,12 +32,8 @@ struct ContentView : View {
                             .padding()
                     }
                 }
-                Button(action: {
-                    addCube = true
-                }, label: {
-                    Text("Put a Cube")
-                }).buttonStyle(.bordered)
-                    .padding()
+                .background(.black.opacity(0.5))
+                .cornerRadius(8)
             }
             
         }

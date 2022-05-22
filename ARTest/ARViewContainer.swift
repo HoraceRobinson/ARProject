@@ -12,7 +12,7 @@ import Combine
 
 struct ARViewContainer: UIViewRepresentable{
     @EnvironmentObject var arViewModel : ARViewModel
-    @Binding var addCube : Bool
+    @Binding var addFruit : Bool
     @Binding var modelName : String
     
     func makeUIView(context : Context) -> ARView{
@@ -20,26 +20,28 @@ struct ARViewContainer: UIViewRepresentable{
         let config = ARWorldTrackingConfiguration()
         config.isAutoFocusEnabled = false
         config.planeDetection = [.horizontal, .vertical]
+        let pos = simd_make_float3(0, 0, 0)
+        let title = try! ModelEntity.loadModel(named: "title")
+        view.placeObj(at: pos, model: title)
         view.session.run(config)
         return view
     }
     func updateUIView(_ uiView: ARView, context: Context) {
-        if(addCube){
-            let boxMesh = MeshResource.generateBox(size: 0.1)
-            let model = try! ModelEntity.loadModel(named: modelName)
-            model.scale = [0.5, 0.5, 0.5]
-            
-//            var transform = ball.transform
-//            transform.scale = SIMD3<Float>(repeating: 1.0)
-            
-            let material = SimpleMaterial(color: .orange, isMetallic: false)
-            _ = ModelEntity(mesh: boxMesh, materials: [material])
-            let anchorEntity = AnchorEntity(plane: .any)
-            anchorEntity.addChild(model)
-//            ball.move(to: transform, relativeTo: ball.parent, duration: 1, timingFunction: .easeOut)
-            arViewModel.arView.scene.addAnchor(anchorEntity)
+        if(addFruit){
+//            let model = try! ModelEntity.loadModel(named: modelName)
+//            model.scale = [0.5, 0.5, 0.5]
+//
+//            model.generateCollisionShapes(recursive: true)
+//            arViewModel.arView.installGestures([.all], for: model)
+//            let anchorEntity = AnchorEntity(plane: .any)
+//            anchorEntity.addChild(model)
+////            ball.move(to: transform, relativeTo: ball.parent, duration: 1, timingFunction: .easeOut)
+//            arViewModel.arView.scene.addAnchor(anchorEntity)
+            fruitModel = modelName
+            arViewModel.putFruit()
             DispatchQueue.main.async {
-                addCube = false
+                addFruit = false
+                arViewModel.remove()
             }
         }
     }
