@@ -15,7 +15,12 @@ struct ARViewContainer: UIViewRepresentable{
     @Binding var addCube : Bool
     
     func makeUIView(context : Context) -> ARView{
-        return arViewModel.arView
+        let view = arViewModel.arView
+        let config = ARWorldTrackingConfiguration()
+        config.isAutoFocusEnabled = false
+        config.planeDetection = [.horizontal, .vertical]
+        view.session.run(config)
+        return view
     }
     func updateUIView(_ uiView: ARView, context: Context) {
         if(addCube){
@@ -32,7 +37,7 @@ struct ARViewContainer: UIViewRepresentable{
             let anchorEntity = AnchorEntity(plane: .any)
             anchorEntity.addChild(model)
             anchorEntity.addChild(ball)
-            ball.move(to: transform, relativeTo: ball.parent, duration: 1, timingFunction: .easeOut)
+//            ball.move(to: transform, relativeTo: ball.parent, duration: 1, timingFunction: .easeOut)
             arViewModel.arView.scene.addAnchor(anchorEntity)
             DispatchQueue.main.async {
                 addCube = false
